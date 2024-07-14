@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyaj8hroji0yd"]
+
+[ext_resource type="PackedScene" uid="uid://b788ye2425ng2" path="res://misc/coin.tscn" id="1_3hmi1"]
+
+[node name="Big_coin" instance=ExtResource("1_3hmi1")]
+scale = Vector2(2, 2)
+coin_value = 5

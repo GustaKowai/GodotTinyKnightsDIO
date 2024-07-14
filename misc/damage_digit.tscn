@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://chytw3a5cw678"]
+
+[ext_resource type="Script" path="res://misc/damage_digit.gd" id="1_yc46s"]
+
+[sub_resource type="Animation" id="Animation_efhln"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.108819, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.482969, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8, 1.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_08k44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1a7q"]
+_data = {
+"RESET": SubResource("Animation_08k44"),
+"default": SubResource("Animation_efhln")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_1p5tx"]
+font_names = PackedStringArray("Cambria")
+font_weight = 999
+
+[sub_resource type="LabelSettings" id="LabelSettings_xprer"]
+font = SubResource("SystemFont_1p5tx")
+font_size = 20
+font_color = Color(1, 0.141176, 0.156863, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DamageDigit" type="Node2D"]
+script = ExtResource("1_yc46s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u1a7q")
+}
+autoplay = "default"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="damage_label" type="Label" parent="Node2D"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -24.0
+offset_right = 66.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_xprer")
+horizontal_alignment = 1
+vertical_alignment = 1

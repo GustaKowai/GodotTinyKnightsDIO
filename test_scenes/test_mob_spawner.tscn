@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c45rvxd0tyqjq"]
+
+[ext_resource type="PackedScene" uid="uid://bktyxn21c17sf" path="res://player/player.tscn" id="1_xqlgh"]
+[ext_resource type="PackedScene" uid="uid://c0vh2b4131xt3" path="res://systems/mob_spawner.tscn" id="2_l7ks7"]
+[ext_resource type="PackedScene" uid="uid://cqx2ju1sbyqv0" path="res://UI/game_ui.tscn" id="7_d01h3"]
+
+[node name="TestMobSpawner" type="Node2D"]
+
+[node name="MobSpawner" parent="." instance=ExtResource("2_l7ks7")]
+position = Vector2(635, 331)
+mobs_per_minute = 30.0
+
+[node name="player" parent="." instance=ExtResource("1_xqlgh")]
+position = Vector2(617, 357)
+
+[node name="GameUI" parent="." instance=ExtResource("7_d01h3")]

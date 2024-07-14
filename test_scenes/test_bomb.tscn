@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbskd5pwdk5bt"]
+
+[ext_resource type="PackedScene" uid="uid://bktyxn21c17sf" path="res://player/player.tscn" id="1_gd4rx"]
+[ext_resource type="PackedScene" uid="uid://c3co08hvjbpdu" path="res://enemies/goblin_bomba.tscn" id="2_ft67o"]
+
+[node name="TestBomb" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_gd4rx")]
+position = Vector2(211, 189)
+
+[node name="goblin_bomba" parent="." instance=ExtResource("2_ft67o")]
+position = Vector2(480, 204)

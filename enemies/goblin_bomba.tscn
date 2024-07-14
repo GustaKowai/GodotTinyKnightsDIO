@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3co08hvjbpdu"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_h8sm5"]
+[ext_resource type="PackedScene" uid="uid://cq55cnttuv66d" path="res://misc/barril.tscn" id="2_liyqj"]
+[ext_resource type="PackedScene" uid="uid://b788ye2425ng2" path="res://misc/coin.tscn" id="3_6nnxv"]
+[ext_resource type="Texture2D" uid="uid://douiusmdyj8xg" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Barrel/Yellow/Barrel_Yellow.png" id="4_oc5ct"]
+[ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="5_qrqqa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdmhs"]
+atlas = ExtResource("4_oc5ct")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukthr"]
+atlas = ExtResource("4_oc5ct")
+region = Rect2(128, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj2lk"]
+atlas = ExtResource("4_oc5ct")
+region = Rect2(256, 512, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6a2gr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdmhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukthr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj2lk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0sw0v"]
+radius = 23.0
+height = 46.0
+
+[node name="goblin_bomba" type="CharacterBody2D" groups=["enemies"]]
+motion_mode = 1
+script = ExtResource("1_h8sm5")
+enemy_health = 5
+death_prefab = ExtResource("2_liyqj")
+enemy_damage = 2
+items = Array[PackedScene]([ExtResource("3_6nnxv")])
+drop_rate = 0.05
+drop_chances = Array[float]([1.0])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -35)
+sprite_frames = SubResource("SpriteFrames_6a2gr")
+autoplay = "default"
+frame_progress = 0.868547
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -24)
+shape = SubResource("CapsuleShape2D_0sw0v")
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("5_qrqqa")
+
+[node name="damage_digit_marker" type="Marker2D" parent="."]
+position = Vector2(-0.5, -61)
