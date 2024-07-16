@@ -42,7 +42,7 @@ height = 46.0
 [node name="goblin_bomba" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_h8sm5")
-enemy_health = 5
+enemy_health = 50
 death_prefab = ExtResource("2_liyqj")
 enemy_damage = 2
 items = Array[PackedScene]([ExtResource("3_6nnxv")])

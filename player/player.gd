@@ -8,17 +8,18 @@ extends CharacterBody2D
 @onready var health_progress_bar = $health_progress_bar
 
 @export_category("Movement")
-@export var speed = 3
+@export var speed = 3.0
 @export_range(0,1) var lerp_smoothness = 0.5
 @export_category("Sword")
-@export var sword_damage:int = 2
+@export var sword_damage:int = 20
 @export_category("Ritual")
-@export var ritual_damage = 1
+@export var ritual_damage = 10
 @export var ritual_interval = 30.0
 @export var ritual_scene:PackedScene
 @export_category("Life")
 @export var max_health = 20
 @export var death_prefab:PackedScene
+@export var level_up_prefab:PackedScene
 var player_health = max_health/2
 
 var atk_direction: Vector2
@@ -185,6 +186,13 @@ func heal(amount):
 	print("O player recebeu cura de ",amount,"A vida total é de ",player_health,"/",max_health)
 	return player_health
 	
+func level_up():
+	print("O player subir de nivel")
+	speed += 0.2
+	max_health += 2
+	var level_up_scene = level_up_prefab.instantiate()
+	add_child(level_up_scene)
+
 func die():
 	GameManager.end_game()
 	if death_prefab:

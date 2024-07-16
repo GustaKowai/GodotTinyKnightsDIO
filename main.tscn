@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://f5v6rdlboqsy"]
+[gd_scene load_steps=19 format=3 uid="uid://f5v6rdlboqsy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4debh"]
 [ext_resource type="Texture2D" uid="uid://c274wbvmiiec5" path="res://addons/Tiny Swords/Terrain/Ground/Tilemap_Flat.png" id="1_34phs"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cqx2ju1sbyqv0" path="res://UI/game_ui.tscn" id="4_07yts"]
 [ext_resource type="Script" path="res://systems/difficult_system.gd" id="6_x3tcx"]
 [ext_resource type="PackedScene" uid="uid://cjlilxqqaeej4" path="res://misc/tree.tscn" id="8_c804c"]
+[ext_resource type="PackedScene" uid="uid://dwasv85ofj0i1" path="res://systems/store_spawner.tscn" id="13_5yekx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fbl2g"]
 texture = ExtResource("1_34phs")
@@ -204,3 +205,6 @@ position = Vector2(3068, 308)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_q64jh")
 debug_color = Color(0.992157, 0, 0.239216, 1)
+
+[node name="StoreSpawner" parent="." instance=ExtResource("13_5yekx")]
+position = Vector2(-1646.58, -1331.91)

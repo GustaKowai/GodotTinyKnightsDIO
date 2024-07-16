@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqx2ju1sbyqv0"]
+[gd_scene load_steps=12 format=3 uid="uid://cqx2ju1sbyqv0"]
 
 [ext_resource type="Texture2D" uid="uid://gg1tyf6kdw1n" path="res://addons/Tiny Swords/UI/Banners/Banner_Horizontal.png" id="1_81tgu"]
 [ext_resource type="Script" path="res://UI/game_ui.gd" id="1_ryhh4"]
@@ -30,6 +30,12 @@ region = Rect2(40, 48, 56, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_iotfx"]
 atlas = ExtResource("4_bklry")
 region = Rect2(40, 48, 56, 56)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i13vq"]
+bg_color = Color(0, 0, 0, 0.192157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wx5e5"]
+bg_color = Color(0, 0.760784, 0.988235, 0.458824)
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_ryhh4")
@@ -116,3 +122,15 @@ offset_bottom = 72.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_iotfx")
+
+[node name="exp_progress_bar" type="ProgressBar" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_i13vq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wx5e5")
+value = 50.0

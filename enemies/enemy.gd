@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var enemy_health = 10
 @export var death_prefab:PackedScene
 @export var enemy_damage = 1
+@export var buff_time = 30.0
 @export_category("Drops")
 @export var items:Array[PackedScene]
 @export_range(0,1) var drop_rate = 0.5
@@ -14,6 +15,9 @@ var damage_digit_prefab:PackedScene
 
 func _ready():
 	damage_digit_prefab = preload("res://misc/damage_digit.tscn")
+	var buff = randi_range(0,floori(GameManager.time_elapsed/buff_time))
+	enemy_health *= 1+(buff/10.0)
+	print("A vida do atual inimigo é de ",enemy_health," e o buff foi de ",buff)
 
 func damage(amount: int):
 	enemy_health -=amount
@@ -46,9 +50,10 @@ func damage(amount: int):
 		die()
 		
 func drop_item():
-	if not items: return
+	if not items:
+		print ("Não tenho drop")
+		return
 	if randf() > drop_rate: return
-	
 	var item = get_random_drop_item().instantiate()
 	item.position = position
 	get_parent().add_child(item)

@@ -10,7 +10,7 @@ func deal_damage():
 	for body in bodies:
 		if body.is_in_group("enemies"):
 			var enemy = body
-			enemy.damage(damage_explosion)
+			enemy.damage(damage_explosion*10)
 		if body.is_in_group("player"):
 			var player = body
 			player.damage(damage_explosion)

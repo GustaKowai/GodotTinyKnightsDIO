@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://btksm7463ngqb"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_5oamc"]
+[ext_resource type="Texture2D" uid="uid://bjn8tdve0jvlc" path="res://addons/Tiny Swords/Resources/Sheep/HappySheep_Bouncing.png" id="1_qikfd"]
+[ext_resource type="PackedScene" uid="uid://cyaj8hroji0yd" path="res://misc/big_coin.tscn" id="2_4jhaa"]
+[ext_resource type="PackedScene" uid="uid://d0mjvrutx62iw" path="res://misc/explode.tscn" id="2_oipbd"]
+[ext_resource type="Script" path="res://Despawn.gd" id="3_610p2"]
+[ext_resource type="Script" path="res://enemies/FollowPlayerSpriteMode.gd" id="5_1ekw7"]
+[ext_resource type="Script" path="res://enemies/SetHealth.gd" id="7_2dymk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cwkoy"]
+radius = 19.0
+height = 42.0
+
+[sub_resource type="Animation" id="Animation_ej16w"]
+resource_name = "default"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 0, 1, 1), Color(1, 0, 1.19209e-07, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sdpop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3wm6t"]
+_data = {
+"RESET": SubResource("Animation_sdpop"),
+"default": SubResource("Animation_ej16w")
+}
+
+[node name="RainbowSheep" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_5oamc")
+death_prefab = ExtResource("2_oipbd")
+enemy_damage = 0
+buff_time = 300.0
+items = Array[PackedScene]([ExtResource("2_4jhaa")])
+drop_rate = 1.0
+drop_chances = Array[float]([1.0])
+
+[node name="FollowPlayerSpriteMode" type="Node" parent="."]
+script = ExtResource("5_1ekw7")
+speed = -1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -14)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_cwkoy")
+
+[node name="damage_digit_marker" type="Marker2D" parent="."]
+position = Vector2(0, -41)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-2, -18)
+texture = ExtResource("1_qikfd")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_3wm6t")
+}
+autoplay = "default"
+
+[node name="Despawn" type="Node" parent="."]
+script = ExtResource("3_610p2")
+distance_range = 400.0
+
+[node name="SetHealth" type="Node" parent="."]
+script = ExtResource("7_2dymk")

@@ -67,6 +67,7 @@ height = 48.0095
 scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_l1cch")
+enemy_health = 100
 death_prefab = ExtResource("2_degbg")
 enemy_damage = 2
 items = Array[PackedScene]([ExtResource("3_iff41"), ExtResource("4_fyeix"), ExtResource("5_03548"), ExtResource("6_alj0g")])

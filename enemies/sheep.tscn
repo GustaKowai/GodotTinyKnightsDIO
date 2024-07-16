@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2cqr6mox8pqg"]
+[gd_scene load_steps=16 format=3 uid="uid://b2cqr6mox8pqg"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_iwbex"]
 [ext_resource type="PackedScene" uid="uid://d0mjvrutx62iw" path="res://misc/explode.tscn" id="2_4vu2o"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b23rv1hcbpc55" path="res://misc/meat.tscn" id="3_lpsq4"]
 [ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="3_t3i0n"]
 [ext_resource type="PackedScene" uid="uid://b788ye2425ng2" path="res://misc/coin.tscn" id="4_qfemc"]
+[ext_resource type="PackedScene" uid="uid://btksm7463ngqb" path="res://enemies/rainbow_sheep.tscn" id="5_qn6wp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8tmk"]
 atlas = ExtResource("2_xcckh")
@@ -64,11 +65,10 @@ height = 34.0
 [node name="Sheep" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_iwbex")
-enemy_health = 1
 death_prefab = ExtResource("2_4vu2o")
-items = Array[PackedScene]([ExtResource("3_lpsq4"), ExtResource("4_qfemc")])
+items = Array[PackedScene]([ExtResource("3_lpsq4"), ExtResource("4_qfemc"), ExtResource("5_qn6wp")])
 drop_rate = 0.2
-drop_chances = Array[float]([0.9, 0.1])
+drop_chances = Array[float]([0.8, 0.1, 0.1])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -19)

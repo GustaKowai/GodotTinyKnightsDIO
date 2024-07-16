@@ -7,7 +7,6 @@ func _ready():
 	
 	
 func on_body_entered(body):
-	print(body)
 	if body.is_in_group("player"):
 		var player = body
 		GameManager.coin_collected.emit(coin_value)

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var damage_ritual = 1
+@export var damage_ritual = 10
 
 @onready var area2d = $Area2D
 

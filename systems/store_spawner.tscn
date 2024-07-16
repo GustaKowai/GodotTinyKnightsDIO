@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwasv85ofj0i1"]
+
+[ext_resource type="Script" path="res://systems/StoreSpawner.gd" id="1_vnkn8"]
+[ext_resource type="PackedScene" uid="uid://bkjevj4lrgevp" path="res://Constructions/Tower.tscn" id="2_stm1h"]
+[ext_resource type="PackedScene" uid="uid://rw2m1la4h043" path="res://Constructions/Tower_ritual.tscn" id="3_dkov7"]
+[ext_resource type="PackedScene" uid="uid://d36gqcex4nil2" path="res://Constructions/Tower_ritual_cd.tscn" id="4_nm7ul"]
+
+[node name="StoreSpawner" type="Node2D"]
+script = ExtResource("1_vnkn8")
+stores = Array[PackedScene]([ExtResource("2_stm1h"), ExtResource("3_dkov7"), ExtResource("4_nm7ul")])

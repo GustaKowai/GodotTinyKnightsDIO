@@ -65,7 +65,7 @@ height = 32.0
 [node name="Pawn" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 script = ExtResource("1_j1616")
-enemy_health = 3
+enemy_health = 30
 death_prefab = ExtResource("2_50dqr")
 enemy_damage = 2
 items = Array[PackedScene]([ExtResource("3_vthv7"), ExtResource("4_jdsea"), ExtResource("5_4fow7")])
